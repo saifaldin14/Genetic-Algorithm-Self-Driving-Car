@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1f92c660-cb9b-8b89-07c2-594e4239850e}</ProjectGuid>
+    <ProjectGuid>{9a15d2e6-e5e1-d8db-56fe-42b0cfe6c426}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -262,19 +262,19 @@
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="MathNet.Numerics">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Assets/Plugins/MathNet.Numerics.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Assets/Plugins/MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/PackageCache/com.unity.analytics@3.6.12/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/PackageCache/com.unity.analytics@3.6.12/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/PackageCache/com.unity.analytics@3.6.12/Unity.Analytics.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/PackageCache/com.unity.analytics@3.6.12/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/PackageCache/com.unity.analytics@3.6.12/Unity.Analytics.Tracker.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/PackageCache/com.unity.analytics@3.6.12/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -628,97 +628,97 @@
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Purchasing.Common">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Purchasing.Common.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Purchasing.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityStub">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityStub.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Analytics">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Analytics.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Purchasing.SecurityCore.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.Codeless">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Purchasing.Codeless.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Purchasing.Codeless.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.Stores">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Purchasing.Stores.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Purchasing.Stores.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-        <HintPath>/Users/saifal-dinali/Downloads/Self-Driving-Car-Series-master/Self Driving Car - Part 3 Completed/Library/ScriptAssemblies/UnityEngine.Advertisements.Editor.dll</HintPath>
+        <HintPath>/Users/saifal-dinali/Desktop/Projects/Unity Projects/Genetic Algorithm Self Driving Car/Library/ScriptAssemblies/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
