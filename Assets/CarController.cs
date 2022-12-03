@@ -10,13 +10,14 @@ public class CarController : MonoBehaviour
     private NNet network;
 
     [Range(-1f,1f)]
-    public float a,t;
+    public float a,t; // Acceleration and turning
 
-    public float timeSinceStart = 0f;
+    public float timeSinceStart = 0f; // Used to check if the car has been idle for too long
 
     [Header("Fitness")]
     public float overallFitness;
-    public float distanceMultipler = 1.4f;
+    // We value how far the car goes versus how fast it goes
+    public float distanceMultipler = 1.4f; // How important the distance is to the overall fitness
     public float avgSpeedMultiplier = 0.2f;
     public float sensorMultiplier = 0.1f;
 
@@ -51,6 +52,7 @@ public class CarController : MonoBehaviour
         transform.eulerAngles = startRotation;
     }
 
+    // When the car hits the wall, reset
     private void OnCollisionEnter (Collision collision) {
         Death();
     }
@@ -75,6 +77,7 @@ public class CarController : MonoBehaviour
         GameObject.FindObjectOfType<GeneticManager>().Death(overallFitness, network);
     }
 
+    // Define custom OFs
     private float deJong(float[] x) {
         float v = 0f;
 
@@ -101,6 +104,7 @@ public class CarController : MonoBehaviour
         float y = avgSpeed * avgSpeedMultiplier;
         float z = ((aSensor+bSensor+cSensor) / 3) * sensorMultiplier;
 
+        // Test out De Jong OF (swap with the other 3)
         float[] deJongArray = {x, y, z};
         float deJongObjectiveFunction = deJong(deJongArray);
         overallFitness = x + y + z;
@@ -146,11 +150,14 @@ public class CarController : MonoBehaviour
 
     private Vector3 inp;
     public void MoveCar (float v, float h) {
-        inp = Vector3.Lerp(Vector3.zero,new Vector3(0,0,v*11.4f),0.02f);
+        float verticalMoveConstant = 11.4f;
+        int horizontalMoveConstant = 90;
+
+        inp = Vector3.Lerp(Vector3.zero, new Vector3(0,0,v * verticalMoveConstant), 0.02f);
         inp = transform.TransformDirection(inp);
         transform.position += inp;
 
-        transform.eulerAngles += new Vector3(0, (h*90)*0.02f,0);
+        transform.eulerAngles += new Vector3(0, (h * horizontalMoveConstant) * 0.02f,0);
     }
 
 }
