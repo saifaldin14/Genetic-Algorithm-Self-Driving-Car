@@ -4,8 +4,7 @@ using UnityEngine;
 
 using MathNet.Numerics.LinearAlgebra;
 
-public class GeneticManager : MonoBehaviour
-{
+public class GeneticManager : MonoBehaviour {
     [Header("References")]
     public CarController controller;
 
@@ -30,54 +29,44 @@ public class GeneticManager : MonoBehaviour
     public int currentGeneration;
     public int currentGenome = 0;
 
-    private void Start()
-    {
+    private void Start() {
         CreatePopulation();
     }
 
-    private void CreatePopulation()
-    {
+    private void CreatePopulation() {
         population = new NNet[initialPopulation];
         FillPopulationWithRandomValues(population, 0);
         ResetToCurrentGenome();
     }
 
-    private void ResetToCurrentGenome()
-    {
+    private void ResetToCurrentGenome() {
         controller.ResetWithNetwork(population[currentGenome]);
     }
 
-    private void FillPopulationWithRandomValues (NNet[] newPopulation, int startingIndex)
-    {
-        while (startingIndex < initialPopulation)
-        {
+    private void FillPopulationWithRandomValues (NNet[] newPopulation, int startingIndex) {
+        while (startingIndex < initialPopulation) {
             newPopulation[startingIndex] = new NNet();
             newPopulation[startingIndex].Initialise(controller.LAYERS, controller.NEURONS);
             startingIndex++;
         }
     }
 
-    public void Death (float fitness, NNet network)
-    {
+    public void Death (float fitness, NNet network) {
 
-        if (currentGenome < population.Length -1)
-        {
+        if (currentGenome < population.Length -1) {
 
             population[currentGenome].fitness = fitness;
             currentGenome++;
             ResetToCurrentGenome();
 
-        }
-        else
-        {
+        } else {
             RePopulate();
         }
 
     }
 
 
-    private void RePopulate()
-    {
+    private void RePopulate() {
         genePool.Clear();
         currentGeneration++;
         naturallySelected = 0;
@@ -98,35 +87,22 @@ public class GeneticManager : MonoBehaviour
 
     }
 
-    private void Mutate (NNet[] newPopulation)
-    {
-
-        for (int i = 0; i < naturallySelected; i++)
-        {
-
-            for (int c = 0; c < newPopulation[i].weights.Count; c++)
-            {
-
-                if (Random.Range(0.0f, 1.0f) < mutationRate)
-                {
+    private void Mutate (NNet[] newPopulation) {
+        for (int i = 0; i < naturallySelected; i++) {
+            for (int c = 0; c < newPopulation[i].weights.Count; c++) {
+                if (Random.Range(0.0f, 1.0f) < mutationRate) {
                     newPopulation[i].weights[c] = MutateMatrix(newPopulation[i].weights[c]);
                 }
-
             }
-
         }
-
     }
 
-    Matrix<float> MutateMatrix (Matrix<float> A)
-    {
-
+    Matrix<float> MutateMatrix (Matrix<float> A) {
         int randomPoints = Random.Range(1, (A.RowCount * A.ColumnCount) / 7);
 
         Matrix<float> C = A;
 
-        for (int i = 0; i < randomPoints; i++)
-        {
+        for (int i = 0; i < randomPoints; i++) {
             int randomColumn = Random.Range(0, C.ColumnCount);
             int randomRow = Random.Range(0, C.RowCount);
 
@@ -134,20 +110,15 @@ public class GeneticManager : MonoBehaviour
         }
 
         return C;
-
     }
 
-    private void Crossover (NNet[] newPopulation)
-    {
-        for (int i = 0; i < numberToCrossover; i+=2)
-        {
+    private void Crossover (NNet[] newPopulation) {
+        for (int i = 0; i < numberToCrossover; i+=2) {
             int AIndex = i;
             int BIndex = i + 1;
 
-            if (genePool.Count >= 1)
-            {
-                for (int l = 0; l < 100; l++)
-                {
+            if (genePool.Count >= 1) {
+                for (int l = 0; l < 100; l++) {
                     AIndex = genePool[Random.Range(0, genePool.Count)];
                     BIndex = genePool[Random.Range(0, genePool.Count)];
 
@@ -166,33 +137,21 @@ public class GeneticManager : MonoBehaviour
             Child2.fitness = 0;
 
 
-            for (int w = 0; w < Child1.weights.Count; w++)
-            {
-
-                if (Random.Range(0.0f, 1.0f) < 0.5f)
-                {
+            for (int w = 0; w < Child1.weights.Count; w++) {
+                if (Random.Range(0.0f, 1.0f) < 0.5f) {
                     Child1.weights[w] = population[AIndex].weights[w];
                     Child2.weights[w] = population[BIndex].weights[w];
-                }
-                else
-                {
+                } else {
                     Child2.weights[w] = population[AIndex].weights[w];
                     Child1.weights[w] = population[BIndex].weights[w];
                 }
-
             }
 
-
-            for (int w = 0; w < Child1.biases.Count; w++)
-            {
-
-                if (Random.Range(0.0f, 1.0f) < 0.5f)
-                {
+            for (int w = 0; w < Child1.biases.Count; w++) {
+                if (Random.Range(0.0f, 1.0f) < 0.5f) {
                     Child1.biases[w] = population[AIndex].biases[w];
                     Child2.biases[w] = population[BIndex].biases[w];
-                }
-                else
-                {
+                } else {
                     Child2.biases[w] = population[AIndex].biases[w];
                     Child1.biases[w] = population[BIndex].biases[w];
                 }
@@ -204,62 +163,48 @@ public class GeneticManager : MonoBehaviour
 
             newPopulation[naturallySelected] = Child2;
             naturallySelected++;
-
         }
     }
 
-    private NNet[] PickBestPopulation()
-    {
-
+    private NNet[] PickBestPopulation() {
         NNet[] newPopulation = new NNet[initialPopulation];
 
-        for (int i = 0; i < bestAgentSelection; i++)
-        {
+        for (int i = 0; i < bestAgentSelection; i++) {
             newPopulation[naturallySelected] = population[i].InitialiseCopy(controller.LAYERS, controller.NEURONS);
             newPopulation[naturallySelected].fitness = 0;
             naturallySelected++;
 
             int f = Mathf.RoundToInt(population[i].fitness * 10);
 
-            for (int c = 0; c < f; c++)
-            {
+            for (int c = 0; c < f; c++) {
                 genePool.Add(i);
             }
-
         }
 
-        for (int i = 0; i < worstAgentSelection; i++)
-        {
+        for (int i = 0; i < worstAgentSelection; i++) {
             int last = population.Length - 1;
             last -= i;
 
             int f = Mathf.RoundToInt(population[last].fitness * 10);
 
-            for (int c = 0; c < f; c++)
-            {
+            for (int c = 0; c < f; c++) {
                 genePool.Add(last);
             }
 
         }
 
         return newPopulation;
-
     }
 
-    private void SortPopulation()
-    {
-        for (int i = 0; i < population.Length; i++)
-        {
-            for (int j = i; j < population.Length; j++)
-            {
-                if (population[i].fitness < population[j].fitness)
-                {
+    private void SortPopulation() {
+        for (int i = 0; i < population.Length; i++) {
+            for (int j = i; j < population.Length; j++) {
+                if (population[i].fitness < population[j].fitness) {
                     NNet temp = population[i];
                     population[i] = population[j];
                     population[j] = temp;
                 }
             }
         }
-
     }
 }
