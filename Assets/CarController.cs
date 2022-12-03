@@ -58,6 +58,7 @@ public class CarController : MonoBehaviour
         Death();
     }
 
+    // Provides a constant and stable environment for the agent to be trained
     private void FixedUpdate() {
 
         InputSensors();
