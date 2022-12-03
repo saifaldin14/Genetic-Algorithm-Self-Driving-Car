@@ -17,6 +17,7 @@ public class CarController : MonoBehaviour
     [Header("Fitness")]
     public float overallFitness;
     // We value how far the car goes versus how fast it goes
+    // These are the traits that are values through the generations
     public float distanceMultipler = 1.4f; // How important the distance is to the overall fitness
     public float avgSpeedMultiplier = 0.2f;
     public float sensorMultiplier = 0.1f;
@@ -109,10 +110,12 @@ public class CarController : MonoBehaviour
         float deJongObjectiveFunction = deJong(deJongArray);
         overallFitness = x + y + z;
 
+        // Car is too idle
         if (timeSinceStart > 20 && overallFitness < 40) {
             Death();
         }
 
+        // The car has done too many laps
         if (overallFitness >= 1000) {
             Death();
         }
