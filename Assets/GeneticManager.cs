@@ -11,6 +11,7 @@ public class GeneticManager : MonoBehaviour
 
     [Header("Controls")]
     public int initialPopulation = 85;
+
     [Range(0.0f, 1.0f)]
     public float mutationRate = 0.055f;
 
@@ -74,7 +75,7 @@ public class GeneticManager : MonoBehaviour
 
     }
 
-    
+
     private void RePopulate()
     {
         genePool.Clear();
@@ -217,7 +218,7 @@ public class GeneticManager : MonoBehaviour
             newPopulation[naturallySelected] = population[i].InitialiseCopy(controller.LAYERS, controller.NEURONS);
             newPopulation[naturallySelected].fitness = 0;
             naturallySelected++;
-            
+
             int f = Mathf.RoundToInt(population[i].fitness * 10);
 
             for (int c = 0; c < f; c++)

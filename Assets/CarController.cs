@@ -97,9 +97,9 @@ public class CarController : MonoBehaviour
     }
 
     private void CalculateFitness() {
-
         totalDistanceTravelled += Vector3.Distance(transform.position,lastPosition);
         avgSpeed = totalDistanceTravelled / timeSinceStart;
+
         float x = totalDistanceTravelled * distanceMultipler;
         float y = avgSpeed * avgSpeedMultiplier;
         float z = ((aSensor+bSensor+cSensor) / 3) * sensorMultiplier;
@@ -120,29 +120,31 @@ public class CarController : MonoBehaviour
 
     private void InputSensors() {
 
-        Vector3 a = (transform.forward+transform.right);
+        Vector3 a = (transform.forward + transform.right); // Diagonal right
         Vector3 b = (transform.forward);
-        Vector3 c = (transform.forward-transform.right);
+        Vector3 c = (transform.forward - transform.right); // Diagonal left
 
-        Ray r = new Ray(transform.position,a);
+        Ray r = new Ray(transform.position, a);
         RaycastHit hit;
 
         if (Physics.Raycast(r, out hit)) {
-            aSensor = hit.distance/20;
+            aSensor = hit.distance / 20; // Ensures that the input is normalized (values between 0 - 1)
+
+            // Used in testing to visualize the sensor lines
             Debug.DrawLine(r.origin, hit.point, Color.red);
         }
 
         r.direction = b;
 
         if (Physics.Raycast(r, out hit)) {
-            bSensor = hit.distance/20;
+            bSensor = hit.distance / 20;
             Debug.DrawLine(r.origin, hit.point, Color.red);
         }
 
         r.direction = c;
 
         if (Physics.Raycast(r, out hit)) {
-            cSensor = hit.distance/20;
+            cSensor = hit.distance / 20;
             Debug.DrawLine(r.origin, hit.point, Color.red);
         }
 
