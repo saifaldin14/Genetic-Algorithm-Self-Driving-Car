@@ -5,6 +5,11 @@ using UnityEngine;
 using MathNet.Numerics.LinearAlgebra;
 
 public class GeneticManager : MonoBehaviour {
+      
+    // Used to count the number of mutations
+    public static int mutationCounter = 0;
+
+
     [Header("References")]
     public CarController controller;
 
@@ -52,7 +57,7 @@ public class GeneticManager : MonoBehaviour {
     }
 
     public void Death (float fitness, NNet network) {
-
+        
         if (currentGenome < population.Length -1) {
 
             population[currentGenome].fitness = fitness;
@@ -91,11 +96,18 @@ public class GeneticManager : MonoBehaviour {
         for (int i = 0; i < naturallySelected; i++) {
             for (int c = 0; c < newPopulation[i].weights.Count; c++) {
                 if (Random.Range(0.0f, 1.0f) < mutationRate) {
+                    mutationCounter += 1;
                     newPopulation[i].weights[c] = MutateMatrix(newPopulation[i].weights[c]);
                 }
             }
         }
     }
+
+    //used to update the mutationCounterUI
+    public static int getMutationCounter(){
+        return mutationCounter;
+    }
+
 
     Matrix<float> MutateMatrix (Matrix<float> A) {
         int randomPoints = Random.Range(1, (A.RowCount * A.ColumnCount) / 7);

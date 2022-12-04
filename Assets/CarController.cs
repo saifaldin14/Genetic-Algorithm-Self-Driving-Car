@@ -5,7 +5,10 @@ using System;
 
 [RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
-{
+{   
+    // Used to count the number of deaths
+    public static int deathCounter = 0;
+
     private Vector3 startPosition, startRotation;
     private NNet network;
 
@@ -55,7 +58,13 @@ public class CarController : MonoBehaviour
 
     // When the car hits the wall, reset
     private void OnCollisionEnter (Collision collision) {
+        deathCounter += 1;
         Death();
+    }
+
+    //used to update the deathCounterUI
+    public static int getDeathCounter(){
+        return deathCounter;
     }
 
     // Provides a constant and stable environment for the agent to be trained
