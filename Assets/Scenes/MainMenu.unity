@@ -1259,8 +1259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -81.56091, y: -505}
-  m_SizeDelta: {x: 172.8604, y: 98.5604}
+  m_AnchoredPosition: {x: -120.516235, y: -516}
+  m_SizeDelta: {x: 924.1903, y: 98.5604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237550717
 MonoBehaviour:
@@ -1289,13 +1289,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 234
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sd
+  m_Text: 
 --- !u!222 &1237550718
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1663,7 +1663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1690554083}
-  - component: {fileID: 1690554082}
+  - component: {fileID: 1690554084}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -1671,19 +1671,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1690554082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690554081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6da0f5a7c724140a29e3c07f1c4af0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox: {fileID: 1237550717}
 --- !u!4 &1690554083
 Transform:
   m_ObjectHideFlags: 0
@@ -1698,6 +1685,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690554084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690554081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1779fc161ec6ec04bab996670c5755ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 1237550717}
 --- !u!1 &1713844765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1839,6 @@ GameObject:
   - component: {fileID: 1970248446}
   - component: {fileID: 1970248445}
   - component: {fileID: 1970248444}
-  - component: {fileID: 1970248447}
   m_Layer: 0
   m_Name: Dropdown
   m_TagString: Untagged
@@ -1926,7 +1925,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690554084}
+        m_TargetAssemblyTypeName: MainMenuChangeOF, Assembly-CSharp
+        m_MethodName: HandleInputData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1970248445
 MonoBehaviour:
@@ -1966,19 +1977,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970248442}
   m_CullTransparentMesh: 1
---- !u!114 &1970248447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970248442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6da0f5a7c724140a29e3c07f1c4af0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox: {fileID: 1237550717}
 --- !u!1 &2055727742
 GameObject:
   m_ObjectHideFlags: 0
