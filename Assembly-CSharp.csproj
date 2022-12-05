@@ -44,6 +44,21 @@
      <Compile Include="Assets/UpdateGamespeed.cs" />
      <Compile Include="Assets/GeneticManager.cs" />
      <Compile Include="Assets/UpdateMutationCounter.cs" />
+     <Compile Include="Assets/Polytope Studio/Lowpoly Medieval Demos/Environment_Free/MouseLook.cs" />
+     <Compile Include="Assets/Polytope Studio/Lowpoly Medieval Demos/Environment_Free/PlayerMovement.cs" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Water_Shader_WebGl.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Plants_Shader.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Opaque_Shader_VS.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Opaque_Shader.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Foliage_Shader.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Water_Shader.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Flowers_Shader.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Rock_Shader_VS.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Plants_Shader_VS.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Flowers_Shader_VS.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Rock_Shader.shader" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/VS_indirect.cginc" />
+     <None Include="Assets/Polytope Studio/Lowpoly Medieval Environments/Sources/Shaders/PT_Vegetation_Foliage_Shader_VS.shader" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
