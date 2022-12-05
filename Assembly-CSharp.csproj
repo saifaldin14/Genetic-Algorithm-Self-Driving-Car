@@ -36,9 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/MainMenuScripts.cs" />
      <Compile Include="Assets/CarController.cs" />
+     <Compile Include="Assets/MainMenuChangeOF.cs" />
      <Compile Include="Assets/NNet.cs" />
+     <Compile Include="Assets/UpdateDeathCounter.cs" />
+     <Compile Include="Assets/UpdateGamespeed.cs" />
      <Compile Include="Assets/GeneticManager.cs" />
+     <Compile Include="Assets/UpdateMutationCounter.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
