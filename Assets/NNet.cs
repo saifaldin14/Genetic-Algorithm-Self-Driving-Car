@@ -21,6 +21,10 @@ public class NNet : MonoBehaviour {
     public float fitness;
 
     public void Initialise (int hiddenLayerCount, int hiddenNeuronCount) {
+        // Initialise the hidden layers
+        // The hidden layers are a list of matrices
+        // Each matrix is a layer of neurons
+        // Each layer of neurons is a matrix of 1 row and the number of neurons in the layer
         inputLayer.Clear();
         hiddenLayers.Clear();
         outputLayer.Clear();
@@ -53,6 +57,10 @@ public class NNet : MonoBehaviour {
     }
 
     public NNet InitialiseCopy (int hiddenLayerCount, int hiddenNeuronCount) {
+        // Initialise the hidden layers
+        // The hidden layers are a list of matrices
+        // Each matrix is a layer of neurons
+        // Each layer of neurons is a matrix of 1 row and the number of neurons in the layer
         NNet n = new NNet();
 
         List<Matrix<float>> newWeights = new List<Matrix<float>>();
@@ -82,6 +90,10 @@ public class NNet : MonoBehaviour {
     }
 
     public void InitialiseHidden (int hiddenLayerCount, int hiddenNeuronCount) {
+        // Initialise the hidden layers
+        // The hidden layers are a list of matrices
+        // Each matrix is a layer of neurons
+        // Each layer of neurons is a matrix of 1 row and the number of neurons in the layer
         inputLayer.Clear();
         hiddenLayers.Clear();
         outputLayer.Clear();
@@ -94,6 +106,10 @@ public class NNet : MonoBehaviour {
     }
 
     public void RandomiseWeights() {
+        // Randomise the weights
+        // The weights are a list of matrices
+        // Each matrix is a layer of weights
+        // Each layer of weights is a matrix of the number of neurons in the previous layer and the number of neurons in the next layer
         for (int i = 0; i < weights.Count; i++) {
             for (int x = 0; x < weights[i].RowCount; x++) {
                 for (int y = 0; y < weights[i].ColumnCount; y++) {
@@ -104,6 +120,12 @@ public class NNet : MonoBehaviour {
     }
 
     public (float, float) RunNetwork (float a, float b, float c) {
+        // Run the network
+        // The input layer is a matrix of 1 row and 3 columns
+        // The first column is the x position of the player
+        // The second column is the y position of the player
+        // The third column is the x position of the target
+        // The output layer is a matrix of 1 row and 2 columns
         inputLayer[0, 0] = a;
         inputLayer[0, 1] = b;
         inputLayer[0, 2] = c;
@@ -123,6 +145,11 @@ public class NNet : MonoBehaviour {
     }
 
     private float Sigmoid (float s) {
+        // Sigmoid function
+        // Used to normalise the output of the network
+        // The output of the network is a number between -1 and 1
+        // The sigmoid function maps the output to a number between 0 and 1
+        // This is used to control the acceleration of the player
         return (1 / (1 + Mathf.Exp(-s)));
     }
 
