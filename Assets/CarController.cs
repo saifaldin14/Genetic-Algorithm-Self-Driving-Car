@@ -140,11 +140,11 @@ public class CarController : MonoBehaviour
         // Return the fitness
         if (objectiveFunction == "De Jong"){
             float[] deJongArray = {x, y, z};
-            float t = deJong(deJongArray);
+            return deJong(deJongArray);
         } else if (objectiveFunction == "Rosenbrock"){
-            float t = rosenbrock(x, y);
+            return rosenbrock(x, y);
         } else if (objectiveFunction == "Himmelblau"){
-            float t = himmelblau(x, y);
+            return himmelblau(x, y);
         }
 
         return x + y + z;
@@ -176,7 +176,7 @@ public class CarController : MonoBehaviour
         // Get the sensor values
         // Set the sensor values
         // Set the sensor values to the network
-        
+
         Vector3 a = (transform.forward + transform.right); // Diagonal right
         Vector3 b = (transform.forward);
         Vector3 c = (transform.forward - transform.right); // Diagonal left
@@ -211,7 +211,7 @@ public class CarController : MonoBehaviour
     public void MoveCar (float v, float h) {
         // Move the car
         // Set the input to the network
-        
+
         float verticalMoveConstant = 11.4f;
         int horizontalMoveConstant = 90;
 
