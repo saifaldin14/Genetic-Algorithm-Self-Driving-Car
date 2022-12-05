@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 
 [RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
 {   
+    public static string objectiveFunction = "De Jong";
+    //Debug.Log(5);
+
     // Used to count the number of deaths
     public static int deathCounter = 0;
 
@@ -54,6 +58,10 @@ public class CarController : MonoBehaviour
         overallFitness = 0f;
         transform.position = startPosition;
         transform.eulerAngles = startRotation;
+    }
+
+    public void setObjectiveFunction(string name){
+        objectiveFunction = name;
     }
 
     // When the car hits the wall, reset
@@ -107,6 +115,18 @@ public class CarController : MonoBehaviour
         return (Math.Pow(Math.Pow(x, 2) + y - 11, 2) + Math.Pow(x + Math.Pow(y, 2) - 7, 2));
     }
 
+    private void chooseObjectiveFunction(){
+        if (objectiveFunction == "De Jong"){
+            Debug.Log("Objective Function is De Jong");
+
+        } else if (objectiveFunction == "Rosenbrock"){
+            Debug.Log("Objective Function is Rosenbrock");
+
+        } else if (objectiveFunction == "Himmelblau"){
+            Debug.Log("Objective Function is Himmelblau");
+        }
+    }
+
     private void CalculateFitness() {
         totalDistanceTravelled += Vector3.Distance(transform.position,lastPosition);
         avgSpeed = totalDistanceTravelled / timeSinceStart;
@@ -114,6 +134,10 @@ public class CarController : MonoBehaviour
         float x = totalDistanceTravelled * distanceMultipler;
         float y = avgSpeed * avgSpeedMultiplier;
         float z = ((aSensor+bSensor+cSensor) / 3) * sensorMultiplier;
+
+        
+        chooseObjectiveFunction();
+
 
         // Test out De Jong OF (swap with the other 3)
         float[] deJongArray = {x, y, z};
