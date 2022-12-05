@@ -6,7 +6,7 @@ using System.IO;
 
 [RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
-{   
+{
     public static string objectiveFunction = "De Jong";
     //Debug.Log(5);
 
@@ -107,24 +107,28 @@ public class CarController : MonoBehaviour
         return v;
     }
 
-    private double rosenbrock(double a, double b, double x, double y) {
-        return (Math.Pow(a - x, 2) + b * Math.Pow(y - Math.Pow(x, 2), 2));
+    private float rosenbrock(float x, float y) {
+        float a = 10.0f;
+        float b = 5.0f;
+
+        return (float)(Math.Pow(a - x, 2) + b * Math.Pow(y - Math.Pow(x, 2), 2));
     }
 
-    private double himmelblau (double x, double y) {
-        return (Math.Pow(Math.Pow(x, 2) + y - 11, 2) + Math.Pow(x + Math.Pow(y, 2) - 7, 2));
+    private float himmelblau (float x, float y) {
+        return (float)(Math.Pow(Math.Pow(x, 2) + y - 11, 2) + Math.Pow(x + Math.Pow(y, 2) - 7, 2));
     }
 
-    private void chooseObjectiveFunction(){
+    private float chooseObjectiveFunction(float x, float y, float z){
         if (objectiveFunction == "De Jong"){
-            Debug.Log("Objective Function is De Jong");
-
+            float[] deJongArray = {x, y, z};
+            float t = deJong(deJongArray);
         } else if (objectiveFunction == "Rosenbrock"){
-            Debug.Log("Objective Function is Rosenbrock");
-
+            float t = rosenbrock(x, y);
         } else if (objectiveFunction == "Himmelblau"){
-            Debug.Log("Objective Function is Himmelblau");
+            float t = himmelblau(x, y);
         }
+
+        return x + y + z;
     }
 
     private void CalculateFitness() {
@@ -135,14 +139,7 @@ public class CarController : MonoBehaviour
         float y = avgSpeed * avgSpeedMultiplier;
         float z = ((aSensor+bSensor+cSensor) / 3) * sensorMultiplier;
 
-        
-        chooseObjectiveFunction();
-
-
-        // Test out De Jong OF (swap with the other 3)
-        float[] deJongArray = {x, y, z};
-        float deJongObjectiveFunction = deJong(deJongArray);
-        overallFitness = x + y + z;
+        overallFitness = chooseObjectiveFunction(x, y, z);
 
         // Car is too idle
         if (timeSinceStart > 20 && overallFitness < 40) {
