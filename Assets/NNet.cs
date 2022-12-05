@@ -124,7 +124,7 @@ public class NNet : MonoBehaviour {
         // The input layer is a matrix of 1 row and 3 columns
         // The first column is the x position of the player
         // The second column is the y position of the player
-        // The third column is the x position of the target
+        // The third column is the z position of the target
         // The output layer is a matrix of 1 row and 2 columns
         inputLayer[0, 0] = a;
         inputLayer[0, 1] = b;
