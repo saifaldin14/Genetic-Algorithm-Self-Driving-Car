@@ -150,10 +150,9 @@ public class GeneticManager : MonoBehaviour {
 
     private void Crossover (NNet[] newPopulation) {
         // Crossover the population
-        // The crossover rate is the chance that two genomes will crossover
         // The crossover rate is a value between 0 and 1
-        // The number of genomes to crossover is the number of genomes that will crossover
         // The number of genomes to crossover is a value between 0 and the initial population
+        // The number of genomes to crossover is the number of genomes that will be bred
 
         for (int i = 0; i < numberToCrossover; i+=2) {
             int AIndex = i;
