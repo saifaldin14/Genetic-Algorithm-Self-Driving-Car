@@ -208,14 +208,14 @@ public class CarController : MonoBehaviour
         // Return the fitness
         if (objectiveFunction == "De Jong"){
             float[] deJongArray = {x, y, z};
-            return deJong(deJongArray);
+            float t = deJong(deJongArray);
         } else if (objectiveFunction == "Rosenbrock"){
-            return rosenbrock(x, y);
+            float t = rosenbrock(x, y);
         } else if (objectiveFunction == "Himmelblau"){
-            return himmelblau(x, y);
+            float t = himmelblau(x, y);
         } else if (objectiveFunction == "testOF") {
             int[] M = decomposeIntoGenome(x, y, z);
-            return testOF(M);
+            int t = testOF(M);
         }
 
         return x + y + z;
