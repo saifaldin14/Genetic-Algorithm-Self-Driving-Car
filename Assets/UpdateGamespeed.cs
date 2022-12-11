@@ -7,9 +7,7 @@ public class UpdateGamespeed : MonoBehaviour
 {
     public UnityEngine.UI.Slider slider;
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         Time.timeScale = slider.value;
     }
 }
