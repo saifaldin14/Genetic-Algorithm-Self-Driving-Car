@@ -260,26 +260,21 @@ public class CarController : MonoBehaviour
         }
 
         r.direction = b;
-
         if (Physics.Raycast(r, out hit)) {
             bSensor = hit.distance / sensorConstant;
             Debug.DrawLine(r.origin, hit.point, Color.red);
         }
 
         r.direction = c;
-
         if (Physics.Raycast(r, out hit)) {
             cSensor = hit.distance / sensorConstant;
             Debug.DrawLine(r.origin, hit.point, Color.red);
         }
-
     }
 
     private Vector3 inp;
     public void MoveCar (float v, float h) {
         // Move the car
-        // Set the input to the network
-
         float verticalMoveConstant = 11.4f;
         int horizontalMoveConstant = 90;
 
