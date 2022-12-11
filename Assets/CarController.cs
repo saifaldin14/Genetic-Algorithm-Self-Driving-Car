@@ -109,8 +109,6 @@ public class CarController : MonoBehaviour
 
     // Define custom OFs
     private float deJong(float[] x) {
-        // De Jong's function
-        // f(x) = x^2
         float v = 0f;
 
         foreach (float xi in x) {
@@ -121,8 +119,6 @@ public class CarController : MonoBehaviour
     }
 
     private float rosenbrock(float x, float y) {
-        // Rosenbrock's function
-        // f(x,y) = (1-x)^2 + 100(y-x^2)^2
         float a = 10.0f;
         float b = 5.0f;
 
@@ -130,8 +126,6 @@ public class CarController : MonoBehaviour
     }
 
     private float himmelblau (float x, float y) {
-        // Himmelblau's function
-        // f(x,y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2
         return (float)(Math.Pow(Math.Pow(x, 2) + y - 11, 2) + Math.Pow(x + Math.Pow(y, 2) - 7, 2));
     }
 
