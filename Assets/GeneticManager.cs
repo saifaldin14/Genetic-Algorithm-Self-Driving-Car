@@ -37,7 +37,6 @@ public class GeneticManager : MonoBehaviour {
 
     private void Start() {
         // Create the initial population
-
         CreatePopulation();
     }
 
@@ -53,7 +52,6 @@ public class GeneticManager : MonoBehaviour {
 
     private void ResetToCurrentGenome() {
         // Reset the car to the current genome
-
         controller.ResetWithNetwork(population[currentGenome]);
     }
 
@@ -73,11 +71,9 @@ public class GeneticManager : MonoBehaviour {
         // The fitness is the overall fitness of the car
 
         if (currentGenome < population.Length -1) {
-
             population[currentGenome].fitness = fitness;
             currentGenome++;
             ResetToCurrentGenome();
-
         } else {
             RePopulate();
         }
@@ -123,17 +119,10 @@ public class GeneticManager : MonoBehaviour {
         }
     }
 
-    //used to update the mutationCounterUI
-    public static int getMutationCounter(){
-        return mutationCounter;
-    }
-
-
     Matrix<float> MutateMatrix (Matrix<float> A) {
         // Mutate a matrix
-        // The mutation rate is the chance that a gene will be mutated
-        // The mutation rate is a value between 0 and 1
-        int randomPoints = Random.Range(1, (A.RowCount * A.ColumnCount) / 7);
+        int mutationConstant = 7;
+        int randomPoints = Random.Range(1, (A.RowCount * A.ColumnCount) / mutationConstant);
 
         Matrix<float> C = A;
 
@@ -145,6 +134,12 @@ public class GeneticManager : MonoBehaviour {
         }
 
         return C;
+    }
+
+
+    //used to update the mutationCounterUI
+    public static int getMutationCounter(){
+        return mutationCounter;
     }
 
     private void Crossover (NNet[] newPopulation) {
