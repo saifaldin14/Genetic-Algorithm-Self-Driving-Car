@@ -7,40 +7,40 @@ using System.IO;
 [RequireComponent(typeof(NNet))]
 public class CarController : MonoBehaviour
 {
+    // Used to set the objective function
     public static string objectiveFunction = "De Jong";
-    //Debug.Log(5);
 
     // Used to count the number of deaths
     public static int deathCounter = 0;
 
-    private Vector3 startPosition, startRotation;
-    private NNet network;
+    // Used to check if the car has been idle for too long
+    public float timeSinceStart = 0f;
 
     [Range(-1f,1f)]
     public float a,t; // Acceleration and turning
-
-    public float timeSinceStart = 0f; // Used to check if the car has been idle for too long
 
     [Header("Fitness")]
     public float overallFitness;
     // We value how far the car goes versus how fast it goes
     // These are the traits that are values through the generations
-    public float distanceMultipler = 1.4f; // How important the distance is to the overall fitness
+    public float distanceMultipler = 1.4f;
     public float avgSpeedMultiplier = 0.2f;
     public float sensorMultiplier = 0.1f;
+
+    // Initial positions
+    private Vector3 startPosition, startRotation;
+    private Vector3 lastPosition;
+    private float totalDistanceTravelled;
+    private float avgSpeed;
+    private float aSensor,bSensor,cSensor;
 
     [Header("Network Options")]
     public int LAYERS = 1;
     public int NEURONS = 10;
 
-    private Vector3 lastPosition;
-    private float totalDistanceTravelled;
-    private float avgSpeed;
-
-    private float aSensor,bSensor,cSensor;
+    private NNet network;
 
     private void Awake() {
-        // Get the network component
         // Get the starting position and rotation
         // Set the last position to the starting position
         // Set the total distance travelled to 0
@@ -92,7 +92,7 @@ public class CarController : MonoBehaviour
         InputSensors();
         lastPosition = transform.position;
 
-
+        // Converts the sensor inputs to acceleration and turning floats
         (a, t) = network.RunNetwork(aSensor, bSensor, cSensor);
 
 
@@ -246,11 +246,14 @@ public class CarController : MonoBehaviour
         Vector3 b = (transform.forward);
         Vector3 c = (transform.forward - transform.right); // Diagonal left
 
+        int sensorConstant = 20; // Value to normalize inputs
+
         Ray r = new Ray(transform.position, a);
         RaycastHit hit;
 
         if (Physics.Raycast(r, out hit)) {
-            aSensor = hit.distance / 20; // Ensures that the input is normalized (values between 0 - 1)
+            // Ensures that the input is normalized (values between 0 - 1)
+            aSensor = hit.distance / sensorConstant;
 
             // Used in testing to visualize the sensor lines
             Debug.DrawLine(r.origin, hit.point, Color.red);
@@ -259,14 +262,14 @@ public class CarController : MonoBehaviour
         r.direction = b;
 
         if (Physics.Raycast(r, out hit)) {
-            bSensor = hit.distance / 20;
+            bSensor = hit.distance / sensorConstant;
             Debug.DrawLine(r.origin, hit.point, Color.red);
         }
 
         r.direction = c;
 
         if (Physics.Raycast(r, out hit)) {
-            cSensor = hit.distance / 20;
+            cSensor = hit.distance / sensorConstant;
             Debug.DrawLine(r.origin, hit.point, Color.red);
         }
 

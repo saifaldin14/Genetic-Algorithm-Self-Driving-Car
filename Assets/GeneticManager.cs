@@ -6,7 +6,7 @@ using MathNet.Numerics.LinearAlgebra;
 
 
 public class GeneticManager : MonoBehaviour {
-      
+
     // Used to count the number of mutations
     public static int mutationCounter = 0;
 
@@ -71,7 +71,7 @@ public class GeneticManager : MonoBehaviour {
     public void Death (float fitness, NNet network) {
         // The car has died
         // The fitness is the overall fitness of the car
-        
+
         if (currentGenome < population.Length -1) {
 
             population[currentGenome].fitness = fitness;
@@ -83,7 +83,6 @@ public class GeneticManager : MonoBehaviour {
         }
 
     }
-
 
     private void RePopulate() {
         // Repopulate the population

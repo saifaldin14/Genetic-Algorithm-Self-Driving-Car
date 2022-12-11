@@ -12,3 +12,4 @@ public class UpdateDeathCounter : MonoBehaviour
         deaths.text = "Deaths #: " + CarController.getDeathCounter().ToString();
     }
 }
+
