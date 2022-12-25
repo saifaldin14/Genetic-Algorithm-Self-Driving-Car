@@ -8,13 +8,13 @@ using System.IO;
 public class CarController : MonoBehaviour
 {
     // Used to set the objective function
-    public static string objectiveFunction = "De Jong";
+    public static string of = "De Jong";
 
     // Used to count the number of deaths
     public static int deathCounter = 0;
 
     // Used to check if the car has been idle for too long
-    public float timeSinceStart = 0f;
+    public float startTime = 0f;
 
     [Range(-1f,1f)]
     public float a,t; // Acceleration and turning
@@ -23,14 +23,14 @@ public class CarController : MonoBehaviour
     public float overallFitness;
     // We value how far the car goes versus how fast it goes
     // These are the traits that are values through the generations
-    public float distanceMultipler = 1.4f;
-    public float avgSpeedMultiplier = 0.2f;
-    public float sensorMultiplier = 0.1f;
+    public float distanceMul = 1.4f;
+    public float avgSpeedMul = 0.2f;
+    public float sensorMul = 0.1f;
 
     // Initial positions
-    private Vector3 startPosition, startRotation;
-    private Vector3 lastPosition;
-    private float totalDistanceTravelled;
+    private Vector3 startPos, startRot;
+    private Vector3 lastPos;
+    private float totDist;
     private float avgSpeed;
     private float aSensor,bSensor,cSensor;
 
@@ -46,8 +46,8 @@ public class CarController : MonoBehaviour
         // Set the total distance travelled to 0
         // Set the average speed to 0
         // Set the fitness to 0
-        startPosition = transform.position;
-        startRotation = transform.eulerAngles;
+        startPos = transform.position;
+        startRot = transform.eulerAngles;
         network = GetComponent<NNet>();
     }
 
@@ -61,18 +61,18 @@ public class CarController : MonoBehaviour
     public void Reset() {
         // Reset the car to the starting position and rotation
         // Set the last position to the starting position
-        timeSinceStart = 0f;
-        totalDistanceTravelled = 0f;
+        startTime = 0f;
+        totDist = 0f;
         avgSpeed = 0f;
-        lastPosition = startPosition;
+        lastPos = startPos;
         overallFitness = 0f;
-        transform.position = startPosition;
-        transform.eulerAngles = startRotation;
+        transform.position = startPos;
+        transform.eulerAngles = startRot;
     }
 
     public void setObjectiveFunction(string name){
         // Set the objective function
-        objectiveFunction = name;
+        of = name;
     }
 
     // When the car hits the wall, reset
@@ -90,7 +90,7 @@ public class CarController : MonoBehaviour
     // Provides a constant and stable environment for the agent to be trained
     private void FixedUpdate() {
         InputSensors();
-        lastPosition = transform.position;
+        lastPos = transform.position;
 
         // Converts the sensor inputs to acceleration and turning floats
         (a, t) = network.RunNetwork(aSensor, bSensor, cSensor);
@@ -98,7 +98,7 @@ public class CarController : MonoBehaviour
 
         MoveCar(a,t);
 
-        timeSinceStart += Time.deltaTime;
+        startTime += Time.deltaTime;
 
         CalculateFitness();
     }
@@ -200,14 +200,14 @@ public class CarController : MonoBehaviour
     private float chooseObjectiveFunction(float x, float y, float z){
         // Choose the objective function
         // Return the fitness
-        if (objectiveFunction == "De Jong"){
+        if (of == "De Jong"){
             float[] deJongArray = {x, y, z};
             float t = deJong(deJongArray);
-        } else if (objectiveFunction == "Rosenbrock"){
+        } else if (of == "Rosenbrock"){
             float t = rosenbrock(x, y);
-        } else if (objectiveFunction == "Himmelblau"){
+        } else if (of == "Himmelblau"){
             float t = himmelblau(x, y);
-        } else if (objectiveFunction == "testOF") {
+        } else if (of == "testOF") {
             int[] M = decomposeIntoGenome(x, y, z);
             int t = testOF(M);
         }
@@ -217,17 +217,17 @@ public class CarController : MonoBehaviour
 
     private void CalculateFitness() {
         // Calculate the fitness
-        totalDistanceTravelled += Vector3.Distance(transform.position,lastPosition);
-        avgSpeed = totalDistanceTravelled / timeSinceStart;
+        totDist += Vector3.Distance(transform.position,lastPos);
+        avgSpeed = totDist / startTime;
 
-        float x = totalDistanceTravelled * distanceMultipler;
-        float y = avgSpeed * avgSpeedMultiplier;
-        float z = ((aSensor+bSensor+cSensor) / 3) * sensorMultiplier;
+        float x = totDist * distanceMul;
+        float y = avgSpeed * avgSpeedMul;
+        float z = ((aSensor+bSensor+cSensor) / 3) * sensorMul;
 
         overallFitness = chooseObjectiveFunction(x, y, z);
 
         // Car is too idle
-        if (timeSinceStart > 20 && overallFitness < 40) {
+        if (startTime > 20 && overallFitness < 40) {
             Death();
         }
 

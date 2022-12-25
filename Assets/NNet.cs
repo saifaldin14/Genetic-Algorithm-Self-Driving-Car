@@ -8,11 +8,11 @@ using System;
 using Random = UnityEngine.Random;
 
 public class NNet : MonoBehaviour {
-    public Matrix<float> inputLayer = Matrix<float>.Build.Dense(1, 3);
+    public Matrix<float> input = Matrix<float>.Build.Dense(1, 3);
 
-    public List<Matrix<float>> hiddenLayers = new List<Matrix<float>>();
+    public List<Matrix<float>> hidden = new List<Matrix<float>>();
 
-    public Matrix<float> outputLayer = Matrix<float>.Build.Dense(1, 2);
+    public Matrix<float> output = Matrix<float>.Build.Dense(1, 2);
 
     public List<Matrix<float>> weights = new List<Matrix<float>>();
 
@@ -20,14 +20,14 @@ public class NNet : MonoBehaviour {
 
     public float fitness;
 
-    public void Initialise (int hiddenLayerCount, int hiddenNeuronCount) {
-        // Initialise the hidden layers
+    public void Init (int hiddenLayerCount, int hiddenNeuronCount) {
+        // Initialize the hidden layers
         // The hidden layers are a list of matrices
         // Each matrix is a layer of neurons
         // Each layer of neurons is a matrix of 1 row and the number of neurons in the layer
-        inputLayer.Clear();
-        hiddenLayers.Clear();
-        outputLayer.Clear();
+        input.Clear();
+        hidden.Clear();
+        output.Clear();
         weights.Clear();
         biases.Clear();
 
@@ -35,7 +35,7 @@ public class NNet : MonoBehaviour {
 
             Matrix<float> f = Matrix<float>.Build.Dense(1, hiddenNeuronCount);
 
-            hiddenLayers.Add(f);
+            hidden.Add(f);
 
             biases.Add(Random.Range(-1f, 1f));
 
@@ -53,11 +53,11 @@ public class NNet : MonoBehaviour {
         weights.Add(OutputWeight);
         biases.Add(Random.Range(-1f, 1f));
 
-        RandomiseWeights();
+        RandomizeWeights();
     }
 
-    public NNet InitialiseCopy (int hiddenLayerCount, int hiddenNeuronCount) {
-        // Initialise the hidden layers
+    public NNet CreateCopy (int hiddenLayerCount, int hiddenNeuronCount) {
+        // Initialize the hidden layers
         // The hidden layers are a list of matrices
         // Each matrix is a layer of neurons
         // Each layer of neurons is a matrix of 1 row and the number of neurons in the layer
@@ -84,28 +84,28 @@ public class NNet : MonoBehaviour {
         n.weights = newWeights;
         n.biases = newBiases;
 
-        n.InitialiseHidden(hiddenLayerCount, hiddenNeuronCount);
+        n.CreateHidden(hiddenLayerCount, hiddenNeuronCount);
 
         return n;
     }
 
-    public void InitialiseHidden (int hiddenLayerCount, int hiddenNeuronCount) {
-        // Initialise the hidden layers
+    public void CreateHidden (int hiddenLayerCount, int hiddenNeuronCount) {
+        // Initialize the hidden layers
         // The hidden layers are a list of matrices
         // Each matrix is a layer of neurons
         // Each layer of neurons is a matrix of 1 row and the number of neurons in the layer
-        inputLayer.Clear();
-        hiddenLayers.Clear();
-        outputLayer.Clear();
+        input.Clear();
+        hidden.Clear();
+        output.Clear();
 
         for (int i = 0; i < hiddenLayerCount + 1; i ++) {
             Matrix<float> newHiddenLayer = Matrix<float>.Build.Dense(1, hiddenNeuronCount);
-            hiddenLayers.Add(newHiddenLayer);
+            hidden.Add(newHiddenLayer);
         }
 
     }
 
-    public void RandomiseWeights() {
+    public void RandomizeWeights() {
         // Randomise the weights
         // The weights are a list of matrices
         // Each matrix is a layer of weights
@@ -126,25 +126,25 @@ public class NNet : MonoBehaviour {
         // The second column is the y position of the player
         // The third column is the z position of the target
         // The output layer is a matrix of 1 row and 2 columns
-        inputLayer[0, 0] = a;
-        inputLayer[0, 1] = b;
-        inputLayer[0, 2] = c;
+        input[0, 0] = a;
+        input[0, 1] = b;
+        input[0, 2] = c;
 
-        inputLayer = inputLayer.PointwiseTanh();
+        input = input.PointwiseTanh();
 
-        hiddenLayers[0] = ((inputLayer * weights[0]) + biases[0]).PointwiseTanh();
+        hidden[0] = ((input * weights[0]) + biases[0]).PointwiseTanh();
 
-        for (int i = 1; i < hiddenLayers.Count; i++) {
-            hiddenLayers[i] = ((hiddenLayers[i - 1] * weights[i]) + biases[i]).PointwiseTanh();
+        for (int i = 1; i < hidden.Count; i++) {
+            hidden[i] = ((hidden[i - 1] * weights[i]) + biases[i]).PointwiseTanh();
         }
 
-        outputLayer = ((hiddenLayers[hiddenLayers.Count-1]*weights[weights.Count-1])+biases[biases.Count-1]).PointwiseTanh();
+        output = ((hidden[hiddenLayers.Count-1]*weights[weights.Count-1])+biases[biases.Count-1]).PointwiseTanh();
 
         //First output is acceleration and second output is steering
-        return (Sigmoid(outputLayer[0,0]), (float)Math.Tanh(outputLayer[0,1]));
+        return (SigmoidActivationFunction(output[0,0]), (float)Math.Tanh(output[0,1]));
     }
 
-    private float Sigmoid (float s) {
+    private float SigmoidActivationFunction (float s) {
         // Sigmoid function
         // Used to normalise the output of the network
         // The output of the network is a number between -1 and 1

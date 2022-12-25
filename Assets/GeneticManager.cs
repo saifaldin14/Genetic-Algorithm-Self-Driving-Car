@@ -11,29 +11,24 @@ public class GeneticManager : MonoBehaviour {
     public static int mutationCounter = 0;
 
 
-    [Header("References")]
     public CarController controller;
 
-    [Header("Controls")]
-    public int initialPopulation = 85;
+    public int initPop = 85; // Initial Population
 
-    [Range(0.0f, 1.0f)]
-    public float mutationRate = 0.055f;
+    public float mutation = 0.055f; // Mutation Rate
 
-    [Header("Crossover Controls")]
-    public int bestAgentSelection = 8;
-    public int worstAgentSelection = 3;
-    public int numberToCrossover;
+    public int bestAgent = 8;
+    public int worstAgent = 3;
+    public int crossoverNum;
 
     private List<int> genePool = new List<int>();
 
-    private int naturallySelected;
+    private int natSelect; // Naturally selected values
 
     private NNet[] population;
 
-    [Header("Public View")]
-    public int currentGeneration;
-    public int currentGenome = 0;
+    public int currGen; // Current Generation
+    public int currGenome = 0;
 
     private void Start() {
         // Create the initial population
@@ -45,23 +40,23 @@ public class GeneticManager : MonoBehaviour {
         // The population array is the same size as the initial population
         // The population array is an array of neural networks
 
-        population = new NNet[initialPopulation];
-        FillPopulationWithRandomValues(population, 0);
+        population = new NNet[initPop];
+        FillPopulationWithInitialValues(population, 0);
         ResetToCurrentGenome();
     }
 
     private void ResetToCurrentGenome() {
         // Reset the car to the current genome
-        controller.ResetWithNetwork(population[currentGenome]);
+        controller.ResetWithNetwork(population[currGenome]);
     }
 
-    private void FillPopulationWithRandomValues (NNet[] newPopulation, int startingIndex) {
+    private void FillPopulationWithInitialValues (NNet[] newPopulation, int startingIndex) {
         // Fill the population with random values
         // The starting index is used to fill the population with new values
 
-        while (startingIndex < initialPopulation) {
+        while (startingIndex < initPop) {
             newPopulation[startingIndex] = new NNet();
-            newPopulation[startingIndex].Initialise(controller.LAYERS, controller.NEURONS);
+            newPopulation[startingIndex].Initialize(controller.LAYERS, controller.NEURONS);
             startingIndex++;
         }
     }
@@ -70,9 +65,9 @@ public class GeneticManager : MonoBehaviour {
         // The car has died
         // The fitness is the overall fitness of the car
 
-        if (currentGenome < population.Length -1) {
-            population[currentGenome].fitness = fitness;
-            currentGenome++;
+        if (currGenome < population.Length -1) {
+            population[currGenome].fitness = fitness;
+            currGenome++;
             ResetToCurrentGenome();
         } else {
             RePopulate();
@@ -86,8 +81,8 @@ public class GeneticManager : MonoBehaviour {
         // The best genomes are selected by their fitness
         // The worst genomes are selected by their fitness
         genePool.Clear();
-        currentGeneration++;
-        naturallySelected = 0;
+        currGen++;
+        natSelect = 0;
         SortPopulation();
 
         NNet[] newPopulation = PickBestPopulation();
@@ -95,11 +90,11 @@ public class GeneticManager : MonoBehaviour {
         Crossover(newPopulation);
         Mutate(newPopulation);
 
-        FillPopulationWithRandomValues(newPopulation, naturallySelected);
+        FillPopulationWithInitialValues(newPopulation, natSelect);
 
         population = newPopulation;
 
-        currentGenome = 0;
+        currGenome = 0;
 
         ResetToCurrentGenome();
 
@@ -109,9 +104,9 @@ public class GeneticManager : MonoBehaviour {
         // Mutate the population
         //  The mutation rate is the chance that a gene will be mutated
         //  The mutation rate is a value between 0 and 1
-        for (int i = 0; i < naturallySelected; i++) {
+        for (int i = 0; i < natSelect; i++) {
             for (int c = 0; c < newPopulation[i].weights.Count; c++) {
-                if (Random.Range(0.0f, 1.0f) < mutationRate) {
+                if (Random.Range(0.0f, 1.0f) < mutation) {
                     mutationCounter += 1;
                     newPopulation[i].weights[c] = MutateMatrix(newPopulation[i].weights[c]);
                 }
@@ -148,7 +143,7 @@ public class GeneticManager : MonoBehaviour {
         // The number of genomes to crossover is a value between 0 and the initial population
         // The number of genomes to crossover is the number of genomes that will be bred
 
-        for (int i = 0; i < numberToCrossover; i+=2) {
+        for (int i = 0; i < crossoverNum; i+=2) {
             int AIndex = i;
             int BIndex = i + 1;
 
@@ -165,8 +160,8 @@ public class GeneticManager : MonoBehaviour {
             NNet Child1 = new NNet();
             NNet Child2 = new NNet();
 
-            Child1.Initialise(controller.LAYERS, controller.NEURONS);
-            Child2.Initialise(controller.LAYERS, controller.NEURONS);
+            Child1.Init(controller.LAYERS, controller.NEURONS);
+            Child2.Init(controller.LAYERS, controller.NEURONS);
 
             Child1.fitness = 0;
             Child2.fitness = 0;
@@ -193,11 +188,11 @@ public class GeneticManager : MonoBehaviour {
 
             }
 
-            newPopulation[naturallySelected] = Child1;
-            naturallySelected++;
+            newPopulation[natSelect] = Child1;
+            natSelect++;
 
-            newPopulation[naturallySelected] = Child2;
-            naturallySelected++;
+            newPopulation[natSelect] = Child2;
+            natSelect++;
         }
     }
 
@@ -208,12 +203,12 @@ public class GeneticManager : MonoBehaviour {
         // The best population is an array of neural networks
         // The number of genomes to naturally select is the number of genomes that will be selected
         // The number of genomes to naturally select is a value between 0 and the initial population
-        NNet[] newPopulation = new NNet[initialPopulation];
+        NNet[] newPopulation = new NNet[initPop];
 
-        for (int i = 0; i < bestAgentSelection; i++) {
-            newPopulation[naturallySelected] = population[i].InitialiseCopy(controller.LAYERS, controller.NEURONS);
-            newPopulation[naturallySelected].fitness = 0;
-            naturallySelected++;
+        for (int i = 0; i < bestAgent; i++) {
+            newPopulation[natSelect] = population[i].CreateCopy(controller.LAYERS, controller.NEURONS);
+            newPopulation[natSelect].fitness = 0;
+            natSelect++;
 
             int f = Mathf.RoundToInt(population[i].fitness * 10);
 
@@ -222,7 +217,7 @@ public class GeneticManager : MonoBehaviour {
             }
         }
 
-        for (int i = 0; i < worstAgentSelection; i++) {
+        for (int i = 0; i < worstAgent; i++) {
             int last = population.Length - 1;
             last -= i;
 
